@@ -4,7 +4,19 @@ import MagicButton from "./MagicButton";
 import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 
+const scrollToSection = (id: string) => {
+  const element = document.getElementById(id);
+  if (element) {
+    const yOffset = -100; // Ajustez cette valeur en fonction de la hauteur de votre barre de navigation
+    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  }
+};
+
 const Hero = () => {
+
+
+ 
   return (
     <div className="pb-20 pt-36">
       {/**
@@ -43,7 +55,7 @@ const Hero = () => {
       <div className="flex justify-center relative my-20 z-10">
         <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
           <p className="uppercase tracking-widest text-xs text-center text-blue-100 max-w-80">
-            Dynamic Web Magic 
+            Duplessis Guillaume - Full Stack Developer
           </p>
 
           {/**
@@ -60,11 +72,18 @@ const Hero = () => {
             Hi! I&apos;m Guillaume, a Full Stack Developer based in Toulouse, France.
           </p>
 
-          <a href="#about">
+          <a
+            href="#about"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection("about");
+            }}
+          >
             <MagicButton
               title="Show my work"
               icon={<FaLocationArrow />}
               position="right"
+              
             />
           </a>
         </div>
